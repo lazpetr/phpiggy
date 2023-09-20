@@ -1,0 +1,19 @@
+{
+    "name": "lazpe/phpiggy",
+    "description": "php application for tracking expenses",
+    "type": "project",
+    "authors": [
+        {
+            "name": "lazpetr",
+            "email": "lazpetr@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Framework\\": "src/Framework",
+            "App\\": "src/App/"
+        }
+
+    }
+}
