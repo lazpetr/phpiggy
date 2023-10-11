@@ -23,7 +23,8 @@ class AboutController
   }
 
 
-  //home() runs in *bootstrap.php*, via  $app->get(path:'/', controller:[HomeController::class, 'home']);
+  //about() runs in *bootstrap.php*, via 
+  //  $app->get(path:'/about/', controller:[AboutController::class, 'about']);
   public function about()
   {
     // $secret = 'This is a secret';
