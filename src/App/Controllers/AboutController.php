@@ -9,7 +9,7 @@ use Framework\TemplateEngine;
 use App\Config\Paths;
 
 
-class HomeController
+class AboutController
 {
 
   // Instead of $view, we should have called it $templateEngine, to be aligned with Class name it was instantiated from
@@ -24,10 +24,9 @@ class HomeController
 
 
   //home() runs in *bootstrap.php*, via  $app->get(path:'/', controller:[HomeController::class, 'home']);
-  public function home()
+  public function about()
   {
     // $secret = 'This is a secret';
-   echo $this->view->render('index.php', ['title' => 'Home page from render' ]);
+   echo $this->view->render('about.php', ['title' => 'About page by Laz' ]);
   }
-
 }

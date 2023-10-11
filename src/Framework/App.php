@@ -24,13 +24,7 @@ class App
 
     $method = $_SERVER['REQUEST_METHOD'];
 
-    $this->router->dispatch($path, $method);
-
-
-  // Laz tests - to del 
-    // dd($this->router);
-   
-
+    $this->router->dispatch($path, $method);  
   }
 
 

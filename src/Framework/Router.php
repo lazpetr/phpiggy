@@ -8,7 +8,7 @@ class Router
 {
 
   private array $routes = [];
-
+  
   public function add(string $method, string $path, array $controller)
   {
 
@@ -20,51 +20,42 @@ class Router
     ];
   }
 
-
   private function normalizePath(string $path): string
   {
     $path = trim($path, '/');
     $path = "/{$path}/";
     $path = preg_replace('#[/]{2,}#', '/', $path);
 
-
     return $path;
   }
 
-
   public function dispatch(string $path, string $method)
   {
-    // echo 'dispatch method run';
+
+    // Laz Debug
+    // echo 'Show routes array content:<br>';
+    // var_dump($this->routes);
 
     $path = $this->normalizePath($path);
     $method = strtoupper($method);
 
-    var_dump($this->routes); // empty array
-
-    // foreach ($this->routes as $route) {
-    //   if (!preg_match("#^{$route['path']}$#", $path) || $route['method'] !== $method) {
-    //     // continue;
-    //     echo 'route NOT found';
-    //   }
-    //   echo 'route found!';
-    // }
+    // var_dump($this->routes); // empty array
 
     foreach ($this->routes as $route) {
-      // echo '<br>' .'That\'s route\'s key:  ' .$key . '<br>' . 'Route\'s path:' .  $route['path'];
-
+     
       if (!preg_match("#^{$route['path']}$#", $path) || $route['method'] !== $method) {
-        // continue;
-        echo 'route NOT found!';
+        // var_dump($route);
+        
         continue;
       }
-      echo 'route found!';
+
+      [$class, $function] = $route['controller'];
+
+      $controllerInstance = new $class;
+      // var_dump($controllerInstance);
+
+      $controllerInstance->$function();
+
     }
-
-    // Test Laz
-    // print_r($this->routes);
-    // var_dump($this->routes);
-
-
-    // echo 'Path is: ' . $path . ' Method is: ' . $method;
   }
 }
